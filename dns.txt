@@ -1,0 +1,8 @@
+shiki.example.ru.	1	IN	A	0.0.0.1
+camo-v3.content.ru.	1	IN	A	0.0.0.0
+dere.content.ru.	1	IN	A	0.0.0.0
+desu.content.ru.	1	IN	A	0.0.0.0
+faye-v2.content.ru.	1	IN	A	0.0.0.0
+kawai.content.ru.	1	IN	A	0.0.0.0
+moe.content.ru. 	1	IN	A	0.0.0.0
+nyaa.content.ru.	1	IN	A	0.0.0.0
