@@ -28,10 +28,6 @@
 
 Рекомендуется использовать [CloudFlare](https://cloudflare.com/) (во вкладке SSL / TLS выберите `Flexible`), ибо он сделает все SSL сертификаты за Вас и защитит от DDOS атак ваши сервера. :)
 
-#### OpenResty или nginx
-
-В Shikimori, как и на всех сайтах любят cookies, а для безопасности все хранится на своем домене, из-за чего приходиться заменять их на свои (shikimori.one -> shiki.example.ru), средств для этого нет в обычном nginx, поэтому необходимо использовать OpenResty.
-
 ### Пошаговая инструкция
 
 Для примера используется ОС `ubuntu 20.04`, решения для других дистрибутивов приветствуются в PR.
@@ -51,16 +47,17 @@ sudo apt install nginx -y
 
 За основу возьмите файл [dns.txt](dns.txt)
 
-3. Добавьте конфиг в openresty
+3. Добавьте конфиг в nginx
 
 > Так же замените все `example.ru` и `content.ru`, как и в шаге 3
 
 Файл [nginx.conf](nginx.conf)
 
-4. Перезапустите Openresty
+4. Перезапустите nginx
 
 ```shell
-systemctl restart nginx
+nginx -t
+nginx -s reload
 ```
 
 5. Всё готово, и если у вас прямые руки, то заходим на `shiki.example.ru` и наслаждаемся!
