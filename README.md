@@ -1,6 +1,6 @@
 # Shikimori proxy
 
-Конфигурационные файлы для [OpenResty](https://openresty.org/en/) _(nginx под стероидами)_, позволяющие запустить своё зеркало [shikimori](https://shikimori.one/) для обхода блокировок Роскомнадзором. [(подробнее про ситуацию с блокировками)](https://vk.com/shikimori?w=wall-9273458_512370)
+Конфигурационные файлы для [nginx], позволяющие запустить своё зеркало [shikimori](https://shikimori.one/) для обхода блокировок Роскомнадзором. [(подробнее про ситуацию с блокировками)](https://vk.com/shikimori?w=wall-9273458_512370)
 
 ## Рабочие зеркала
 
@@ -14,7 +14,7 @@
 - Не работают некоторые XHR запросы, так-же из-за проксирования (уже связались с разработчиком, для решения данной проблемы)
 
 ## Установка
-
+  
 ### Предисловие
 
 #### Домены
@@ -36,24 +36,14 @@
 
 Для примера используется ОС `ubuntu 20.04`, решения для других дистрибутивов приветствуются в PR.
 
-1. Отключите nginx (если он у Вас есть)
-```shell
-sudo systemctl disable nginx
-sudo systemctl stop nginx
-```
-
-2. Установка OpenResty
+1. Установите nginx (если его у вас нет)
 
 ```shell
-sudo apt-get -y install --no-install-recommends wget gnupg ca-certificates
-wget -O - https://openresty.org/package/pubkey.gpg | sudo apt-key add -
-echo "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/openresty.list
-sudo apt-get update
-sudo apt-get -y install --no-install-recommends openresty   
+sudo apt install nginx -y
 ```
 
-3. Создайте DNS-записи
-> ### Примечание:
+2. Создайте DNS-записи
+
 > Замените с помощью *(Ctrl+R)*:
 > `example.ru` на свой домен, к примеру: `nnstd.me`,
 > `content.ru` на свой домен, где будет прокси картинок, можно использовать тот же самый домен.
@@ -61,17 +51,19 @@ sudo apt-get -y install --no-install-recommends openresty
 
 За основу возьмите файл [dns.txt](dns.txt)
 
-4. Добавьте конфиг в openresty
+3. Добавьте конфиг в openresty
+
 > Так же замените все `example.ru` и `content.ru`, как и в шаге 3
 
 Файл [nginx.conf](nginx.conf)
 
-5. Перезапустите Openresty
+4. Перезапустите Openresty
+
 ```shell
-systemctl restart openresty
+systemctl restart nginx
 ```
 
-6. Всё готово, и если у вас прямые руки, то заходим на `shiki.example.ru` и наслаждаемся!
+5. Всё готово, и если у вас прямые руки, то заходим на `shiki.example.ru` и наслаждаемся!
 
 ## Лицензия
 
@@ -84,5 +76,5 @@ as published by Sam Hocevar. See the `LICENSE.md` file for more details.
 
 ## Credits
 
-- [Shikimori](http://shikimori.one/) - Официальный сайт Shikimori
-- [Openresty](https://openresty.org/en/) - Использования Lua в nginx для модификации `cookies`
+- [shikimori](http://shikimori.one/) - Официальный сайт Shikimori
+- [nginx](https://nginx.org/ru/) - HTTP сервер
